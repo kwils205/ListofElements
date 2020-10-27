@@ -1,90 +1,85 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <style>
-            table{
-                border-collapse: collapse;
-            }
+<HTML>
+<HEAD>
+	
+	<SCRIPT language="javascript">
+		function addRow(tableID) {
+
+			var table = document.getElementById(tableID);
             
-            th, td{
-                border: 1px solid #999;
-                padding: 0.5rem;
-                text-align: left;
-            }
-        </style>
-        <meta charset="utf-8">
-        <h1>List of Elements</h1>
-        <link rel="tabledesign" href="tabledesign.css">
-    </head>
-    <body>
-        <title>List Of Elements</title>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Product Name</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>00001</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  <tr>
-    <td>00002</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  <tr>
-    <td>00003</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  <tr>
-    <td>00004</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  <tr>
-    <td>00005</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  <tr>
-    <td>00006</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  <tr>
-    <td>00007</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  <tr>
-    <td>00008</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  <tr>
-    <td>00009</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  <tr>
-    <td>00010</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  <tr>
-    <td>00011</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  <tr>
-    <td>00012</td>
-    <td contenteditable = 'true'></td>
-    <td contenteditable = 'true'></td>
-  </tr>
-  
-</table>
-</body>
-</html>
+			var rowCount = table.rows.length;
+			var row = table.insertRow(rowCount);
+
+			var cell1 = row.insertCell(0);
+			var element1 = document.createElement("input");
+			element1.type = "checkbox";
+			element1.name="chkbox[]";
+			cell1.appendChild(element1);
+
+			var cell2 = row.insertCell(1);
+			var element2 = document.createElement("input");
+			element2.type ="text";
+			cell2.appendChild(element3);
+
+			var cell3 = row.insertCell(2);
+			var element3 = document.createElement("input");
+			element3.type = "text";
+			cell3.appendChild(element2);
+
+            
+		}
+
+		function deleteRow(tableID) {
+			try {
+			var table = document.getElementById(tableID);
+			var rowCount = table.rows.length;
+
+			for(var i=0; i<rowCount; i++) {
+				var row = table.rows[i];
+				var chkbox = row.cells[0].childNodes[0];
+				if(null != chkbox && true == chkbox.checked) {
+					table.deleteRow(i);
+					rowCount--;
+					i--;
+				}
+
+
+			}
+			}catch(e) {
+				alert(e);
+			}
+		}
+
+    </SCRIPT>
+    <style>
+        table{
+			border-collapse: collapse;
+		}
+		
+        th, td{
+            border: 1px solid #999;
+            padding: 0.5rem;
+            text-align: left;
+        }
+         
+    </style>
+     <meta charset="utf-8">
+     <h1>List of Elements</h1>
+     <link rel="tabledesign" href="tabledesign.css">
+</HEAD>
+<BODY>
+    <title>List Of Elements</title>
+	<INPUT type="button" value="Add Row" onclick="addRow('dataTable')" />
+
+	<INPUT type="button" value="Delete Row" onclick="deleteRow('dataTable')" />
+
+	<TABLE id="dataTable" width="350px" >
+		<TR>
+			<TD>Select</TD>
+			<TD> ID </TD>
+            <TD> Product Name </TD>
+            
+		</TR>
+	</TABLE>
+
+</BODY>
+</HTML>
